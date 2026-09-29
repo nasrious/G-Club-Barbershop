@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://g-club-pattaya-site-official.vercel.app/sitemap.xml
+Sitemap: https://www.gclubpattaya.com/sitemap.xml
