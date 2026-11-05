@@ -128,7 +128,7 @@
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LYM7T9WHP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -167,13 +167,17 @@
     <!-- End of bodyEnd -->
 <script>
 document.addEventListener('click', function (e) {
-  var el = e.target.closest('a, button, [role="button"]');
-  if (!el) return;
-  var text = (el.innerText || '').trim();
-  if (text === 'Book Now') {
-    gtag('event', 'cta_click', { button_name: text });
+  var el = e.target.closest && e.target.closest('a, button, [role="button"]');
+  if (!el || typeof gtag !== 'function') return;
+  var text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  if (text.indexOf('book now') !== -1) {
+    gtag('event', 'cta_click', {
+      button_name: 'Book Now',
+      link_url: el.href || '',
+      transport_type: 'beacon'
+    });
   }
-});
+}, true);
 </script>
 </body>
 </html>
